@@ -1,0 +1,21 @@
+{
+  "name": "tree-sitter-just",
+  "version": "0.1.0",
+  "description": "Grammar for Justfiles",
+  "keywords": [
+    "parser",
+    "tree-sitter"
+  ],
+  "tree-sitter": {
+    "scope": "source.just",
+    "file-types": [
+      "Justfile",
+      "justfile"
+    ],
+    "injection-regex": "just|justfile"
+  },
+  "dependencies": {
+    "nan": "^2.14.2"
+  },
+  "main": "bindings/node"
+}
