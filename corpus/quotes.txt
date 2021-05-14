@@ -1,0 +1,63 @@
+============================
+Single quotes
+============================
+a := 'a b\nc'
+d := '''
+    this is a mult-
+    line string
+'''
+
+c := 'a
+b'
+
+----------------------------
+(source_file
+    (assignment
+        (name) (expression (string)))
+    (assignment
+        (name) (expression (string)))
+    (assignment
+        (name) (expression (string))))
+
+===========================
+Double quotes
+===========================
+b := "\ta b\nc"
+e := """
+    \tas is this multi-\
+    line string
+"""
+f := "with possibly escaped\
+newlines"
+
+--------------------------
+
+(source_file
+    (assignment
+        (name) (expression (string (escape) (escape))))
+    (assignment
+        (name) (expression (string (escape) (escape))))
+    (assignment
+        (name) (expression (string (escape)))))
+
+==========================
+Backticks
+==========================
+c := `echo hi`
+d := ```
+    echo hello
+    echo world
+```
+e := `echo hi
+echo bye`
+
+---------------------------------------------------
+
+(source_file
+    (assignment
+        (name) (expression (backtick)))
+    (assignment
+        (name) (expression (backtick)))
+    (assignment
+        (name) (expression (backtick))))
+
