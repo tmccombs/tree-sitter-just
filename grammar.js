@@ -41,7 +41,7 @@ module.exports = grammar({
         ),
 
         escape: $ => token.immediate(prec(1, seq('\\', /[tnr"\\\n]/))),
-        _not_escape: $ => '\\',
+        _not_escape: $ => token.immediate('\\'),
 
         alias: $ => seq(
             'alias',
@@ -65,10 +65,10 @@ module.exports = grammar({
 
         expression: $ => choice(
             seq('if', $.condition, '{', $.expression, '}', 'else', '{', $.expression, '}'),
-            seq($.value, '+', $.value),
-            $.value,
+            seq($._value, '+', $._value),
+            $._value,
         ),
-        value: $ => choice(
+        _value: $ => choice(
             $._call,
             $.name,
             $.string,
@@ -97,7 +97,7 @@ module.exports = grammar({
             optional($.body)
         )),
 
-        parameter: $ => seq($.name, optional(seq('=', $.value))),
+        parameter: $ => seq($.name, optional(seq('=', $._value))),
 
         dependency: $ => choice(
             $.name,

@@ -115,6 +115,10 @@
       "required": true,
       "types": [
         {
+          "type": "backtick",
+          "named": true
+        },
+        {
           "type": "condition",
           "named": true
         },
@@ -123,7 +127,11 @@
           "named": true
         },
         {
-          "type": "value",
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -153,11 +161,19 @@
       "required": true,
       "types": [
         {
+          "type": "backtick",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "name",
           "named": true
         },
         {
-          "type": "value",
+          "type": "string",
           "named": true
         }
       ]
@@ -250,33 +266,6 @@
       "types": [
         {
           "type": "escape",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "value",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "backtick",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         }
       ]

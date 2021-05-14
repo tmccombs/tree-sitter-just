@@ -184,8 +184,11 @@
       }
     },
     "_not_escape": {
-      "type": "STRING",
-      "value": "\\"
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "\\"
+      }
     },
     "alias": {
       "type": "SEQ",
@@ -478,7 +481,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "value"
+              "name": "_value"
             },
             {
               "type": "STRING",
@@ -486,17 +489,17 @@
             },
             {
               "type": "SYMBOL",
-              "name": "value"
+              "name": "_value"
             }
           ]
         },
         {
           "type": "SYMBOL",
-          "name": "value"
+          "name": "_value"
         }
       ]
     },
-    "value": {
+    "_value": {
       "type": "CHOICE",
       "members": [
         {
@@ -737,7 +740,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "value"
+                  "name": "_value"
                 }
               ]
             },

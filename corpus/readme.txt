@@ -35,5 +35,4 @@ test TEST: build
     (body
       (interpolation
         (expression
-          (value
-            (name)))))))
+          (name))))))
