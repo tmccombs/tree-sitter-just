@@ -24,7 +24,7 @@ module.exports = grammar({
             NEWLINE,
         ),
 
-        shebang: $ => /#!.*/,
+        shebang: $ => token.immediate(/#!.*\n/),
         comment: $ => /#.*/,
         name: $ => token(/[a-zA-Z_][a-zA-Z0-9_-]*/),
         _whitespace: $ => /[ \t]+/,
@@ -52,7 +52,7 @@ module.exports = grammar({
         ),
 
         assignment: $ => seq($.name, ':=', $.expression, NEWLINE),
-        _export: $ => seq('export', $.assignment),
+        _export: $ => prec(1, seq('export', $.assignment)),
 
         setting: $ => seq('set', choice(
             seq('dotenv-load', optional(seq(':=', $.bool))),
@@ -107,10 +107,10 @@ module.exports = grammar({
         body: $ => prec.left(seq(optional(seq(INDENT, $.shebang)), repeat1($._line))),
 
         _line: $ => choice(
-            seq(INDENT, repeat1(choice($._text, $.interpolation))),
+            seq(INDENT, repeat1(choice($._text, $.interpolation)), NEWLINE),
             NEWLINE,
         ),
-        _text: $ => token(choice(/[^{\n]+/, '{{{{', '{[^{]')),
+        _text: $ => token(choice(/[^{\n]+/, '{{{{', /\{[^{]/)),
         interpolation: $ => seq('{{', $.expression, '}}'),
     }
 });

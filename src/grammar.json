@@ -59,8 +59,11 @@
       ]
     },
     "shebang": {
-      "type": "PATTERN",
-      "value": "#!.*"
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "#!.*\\n"
+      }
     },
     "comment": {
       "type": "PATTERN",
@@ -243,17 +246,21 @@
       ]
     },
     "_export": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "export"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "assignment"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "export"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "assignment"
+          }
+        ]
+      }
     },
     "setting": {
       "type": "SEQ",
@@ -852,6 +859,13 @@
                   }
                 ]
               }
+            },
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "(\\r?\\n)+"
+              }
             }
           ]
         },
@@ -878,8 +892,8 @@
             "value": "{{{{"
           },
           {
-            "type": "STRING",
-            "value": "{[^{]"
+            "type": "PATTERN",
+            "value": "\\{[^{]"
           }
         ]
       }

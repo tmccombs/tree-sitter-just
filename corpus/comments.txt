@@ -1,0 +1,19 @@
+===========
+Shebang and comments
+===========
+#!/usr/bin/just
+
+# this is a regular comment
+# here is another
+x := "hi" #comment at end of line
+
+----------
+
+(source_file
+    (shebang)
+    (comment)
+    (comment)
+    (assignment
+        (name)
+        (expression (string))
+        (comment)))

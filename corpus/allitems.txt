@@ -1,0 +1,74 @@
+=====
+Alias
+=====
+
+alias foo := bar
+
+----
+(source_file
+    (alias (name) (name)))
+
+==========
+Assignment
+==========
+
+foo := "bar"
+
+zag := if os() == "linux" { "glibc" } else { "unknown" }
+
+-----------
+(source_file
+    (assignment (name) (expression (string)))
+    (assignment
+        (name)
+        (expression
+        (condition (expression (name)) (expression (string)))
+        (expression (string))
+        (expression (string)))))
+
+=========
+Export
+=========
+
+export foo := "bar"
+
+-----------
+
+(source_file
+    (assignment (name) (expression (string))))
+
+===========
+Setting
+===========
+
+set dotenv-load
+set export := true
+set positional-arguments := false
+set shell := ["/bin/bash", "-c"]
+
+--------------
+(source_file
+    (setting)
+    (setting (bool))
+    (setting (bool))
+    (setting (string) (string)))
+
+=======
+Recipe
+=======
+
+@recipe a b = d: q (z "run")
+    #!/bin/sh
+    do_1
+    echo a={{ a }}
+    echo { {{{{ }}
+
+--------------
+(source_file
+    (recipe (name)
+        (parameter (name))
+        (parameter (name) (name))
+        (dependency (name))
+        (dependency (name) (expression (string)))
+        (body (shebang) (interpolation (expression (name))))))
+
