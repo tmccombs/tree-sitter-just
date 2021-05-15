@@ -4,7 +4,8 @@ Single quotes
 a := 'a b\nc'
 d := '''
     this is a mult-
-    line string
+    line string with.
+    don't judge
 '''
 
 c := 'a
@@ -25,7 +26,7 @@ Double quotes
 b := "\ta b\nc"
 e := """
     \tas is this multi-\
-    line string
+    line "string"
 """
 f := "with possibly escaped\
 newlines"
@@ -47,6 +48,7 @@ c := `echo hi`
 d := ```
     echo hello
     echo world
+    echo hello `hostname`
 ```
 e := `echo hi
 echo bye`
